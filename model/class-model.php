@@ -1,7 +1,7 @@
 <?php
     include_once 'partials/connect.php';
 
-    class ClasstModel {
+    class ClassModel {
         private $pdo;
 
         public function __construct(PDO $pdo) {
@@ -13,6 +13,14 @@
             $statement->execute();
 
             return $statement->fetchAll();
+        }
+
+        public function getClass($classId) {
+            $statement = $this->pdo->prepare('SELECT * FROM class WHERE id = :classId');
+            $statement->bindValue(':classId', $classId, PDO::PARAM_INT);
+            $statement->execute();
+    
+            return $statement->fetch();
         }
     }
 

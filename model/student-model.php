@@ -14,6 +14,14 @@
 
             return $statement->fetchAll();
         }
+
+        public function getStudentsByClassId($classId) {
+            $statement = $this->pdo->prepare('SELECT students.*, class.name AS class_name FROM students JOIN class ON students.class_id=class.id WHERE class.id = :classId');
+            $statement->bindValue(':classId', $classId, PDO::PARAM_INT);
+            $statement->execute();
+    
+            return $statement->fetchAll();
+        }
     }
 
 ?>
