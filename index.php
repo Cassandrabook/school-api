@@ -22,19 +22,15 @@
             $classApi->outputClasses($classModel->getClasses());
         }
     
-        if ($chosenAction == 'student-id') {
+        if ($chosenAction == 'student') {
             if (isset($_GET['id'])) {
                 $studentApi->outputStudents($studentModel->getStudentsByClassId($_GET['id']));
-            } else {
-                // Inget klass-id angivet, hantera fel här
             }
         }
 
-        if ($chosenAction == 'class-id') {
+        if ($chosenAction == 'class') {
             if (isset($_GET['id'])) {
                 $classApi->outputClasses($classModel->getClass($_GET['id']));
-            } else {
-                // Inget klass-id angivet, hantera fel här
             }
         }
     }
